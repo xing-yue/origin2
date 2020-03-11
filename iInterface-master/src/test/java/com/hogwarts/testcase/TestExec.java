@@ -60,8 +60,20 @@ public class TestExec {
         Assert.assertEquals(city, exp_city, "期望城市检测");
     }
 
+    @Test(groups = {"BaseCase"}, description = "验证上海天气返回城市名称是否正确", dataProvider = "dataShangHai")
+    public void getShangQiu_Succ(String exp_city) throws IOException {
+        cityCode = "101020100";
+        Reporter.log("【正常用例】:获取" + exp_city + "天气成功!");
+        httpResult = weather.getHttpRespone(cityCode);
+        Reporter.log("请求地址: " + weather.geturl());
+        Reporter.log("返回结果: " + httpResult);
+        weatherinfo = JSONParaser.getJsonValue(httpResult, "weatherinfo");
+        city = JSONParaser.getJsonValue(weatherinfo, "city");
+        Reporter.log("用例结果: resultCode=>expected: " + exp_city + " ,actual: " + city);
+        Assert.assertEquals(city, exp_city, "期望城市检测");
+    }
     @DataProvider(name = "dataShangHai")
     public Object[][] dataProvider() {
-        return new Object[][]{{"上海"}, {"上海"},{"上海"},};
+        return new Object[][]{{"上海"}, {"上海"},{"上海"},{"商丘"}};
     }
 }
