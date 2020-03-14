@@ -15,10 +15,16 @@ public class javawrite {
         int mimiage;
         String color;
         String elema;
-        Dog mimi=new Dog();
+        String ishun;
+        Dog mimi;
+        int[]nums={1,2,3,4};
+        for(int a2:nums){
+        mimi = new Dog(a2,"blue" );
         mimiage=mimi.age();
         color=mimi.color();
-        System.out.println("mimi is "+mimiage+" years old");
+        ishun=mimi.ishun();
+        System.out.println("mimi is "+mimiage+" years old,and it is "+color);
+        }
     }
 
 }
