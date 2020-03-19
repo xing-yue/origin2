@@ -1,15 +1,17 @@
 package com.hogwarts.testcase;
 
-import org.junit.Test;
-import io.qameta.allure.Step;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
-import org.testng.Assert;
-import org.testng.Reporter;
-import org.testng.SkipException;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.*;
+import org.junit.Test;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+
+import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 public class TsetCaseJunit1 {
     @BeforeClass
@@ -22,6 +24,27 @@ public class TsetCaseJunit1 {
     }
     @Test
     public  void  fun3(){
+        int mimiage;
+        String color;
+        String ishun;
+        Dog mimi;
+        int[]nums={1,2,3,4};
+        for(int a2:nums){
+            mimi = new Dog(a2,"blue" );
+            mimiage=mimi.age;
+            color=mimi.color();
+            ishun=mimi.ishun();
+            assertThat("dog is blue?","blue",equalTo(color));
+            assertThat("dog age?",2.0,
+                    is(closeTo(mimiage,2.0)));
+            System.out.println("mimi is "+mimiage+" years old,and it is "+color);
+            if(a2==2){
+                continue;
+            }
+            if(a2==3){
+                break;
+            }
+        }
         System.out.println("fun3 is work");
     }
     @Ignore
