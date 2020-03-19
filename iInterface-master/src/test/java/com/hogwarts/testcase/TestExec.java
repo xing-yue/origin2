@@ -18,7 +18,7 @@ public class TestExec {
     public static String cityCode = "";
     CityWeather weather = new CityWeather();
 
-    @Test(groups = {"BaseCase"}, description = "验证深圳天气返回城市名称是否正确")
+   /* @Test(groups = {"BaseCase"}, description = "验证深圳天气返回城市名称是否正确")
     public void getShenZhen_Succ() throws Exception {
         exp_city = "深圳";
         cityCode = "101280601";
@@ -31,7 +31,7 @@ public class TestExec {
         Reporter.log("用例结果: resultCode=>expected: " + exp_city + " ,actual: " + city);
         Assert.assertEquals(city, exp_city);
         throw new SkipException("");
-    }
+    }*/
 
     @Test(groups = {"BaseCase"}, description = "验证北京天气返回城市名称是否正确")
     public void getBeiJing_Succ() throws IOException {
