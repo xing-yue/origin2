@@ -12,7 +12,7 @@ import java.sql.Statement;
                 // 加载数据库驱动
                 Class.forName("com.mysql.jdbc.Driver");
                 // 声明数据库db_database17的URL
-                String url = "jdbc:mysql://192.168.1.21:3306/";
+                String url = "jdbc:mysql://192.168.1.25:3306/";
                 // 数据库用户名
                 String user = "root";
                 // 数据库密码

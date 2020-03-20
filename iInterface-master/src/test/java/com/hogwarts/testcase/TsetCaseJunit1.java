@@ -1,12 +1,11 @@
 package com.hogwarts.testcase;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.rules.ErrorCollector;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 import static org.hamcrest.Matchers.closeTo;
@@ -22,6 +21,8 @@ public class TsetCaseJunit1 {
     public  void  fun2(){
         System.out.println("fun2 is work");
     }
+    @Rule
+    public ErrorCollector errorCollector=new ErrorCollector();
     @Test
     public  void  fun3(){
         int mimiage;
@@ -37,6 +38,10 @@ public class TsetCaseJunit1 {
             assertThat("dog is blue?","blue",equalTo(color));
             assertThat("dog age?",2.0,
                     is(closeTo(mimiage,2.0)));
+            assertThat("dog age?",mimiage,anyOf(equalTo(0),
+                    equalTo(1),equalTo(2),equalTo(3)));
+            errorCollector.checkThat(1,equalTo(2));//不会报错停止，会继续往下执行
+            errorCollector.checkThat("blue",equalTo(color));
             System.out.println("mimi is "+mimiage+" years old,and it is "+color);
             if(a2==2){
                 continue;
